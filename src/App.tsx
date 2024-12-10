@@ -102,7 +102,7 @@ function App() {
         );
     };
 
-    const onMouseUp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const onMouseUp = () => {
         setTaskList((prevTaskList) =>
             prevTaskList.map((task) => {
                 task.grabbed = false;
@@ -141,17 +141,8 @@ function App() {
         );
     }
 
-    const onTouchUp = (e: React.TouchEvent<HTMLDivElement>) => {
-        setTaskList((prevTaskList) =>
-            prevTaskList.map((task) => {
-                task.grabbed = false;
-                return task;
-            })
-        );
-    }
-
     return (
-        <div className="container" onMouseMove={onMouseMove} onMouseUp={onMouseUp} onTouchMove={onTouchMove} onTouchEnd={onTouchUp}>
+        <div className="container" onMouseMove={onMouseMove} onMouseUp={onMouseUp} onTouchMove={onTouchMove} onTouchEnd={onMouseUp}>
             {taskList.map((task) => (
                 <div
                     key={task.id}
